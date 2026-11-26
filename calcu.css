@@ -1,0 +1,661 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 30px;
+
+    font-family: 'Quicksand', sans-serif;
+    overflow-x: hidden;
+
+    /* MERMAID BACKGROUND */
+    background:
+        linear-gradient(
+            rgba(4, 48, 76, 0.38),
+            rgba(65, 95, 130, 0.35)
+        ),
+        url("../images/mermaid.jpg");
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* FLOATING BACKGROUND */
+
+.background-decor {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.background-decor span {
+    position: absolute;
+    font-size: 35px;
+    opacity: 0.7;
+    animation: floatBackground 7s infinite ease-in-out;
+}
+
+.background-decor span:nth-child(1) {
+    top: 8%;
+    left: 8%;
+}
+
+.background-decor span:nth-child(2) {
+    top: 15%;
+    right: 12%;
+}
+
+.background-decor span:nth-child(3) {
+    top: 45%;
+    left: 5%;
+    font-size: 45px;
+}
+
+.background-decor span:nth-child(4) {
+    top: 70%;
+    right: 8%;
+}
+
+.background-decor span:nth-child(5) {
+    top: 30%;
+    right: 5%;
+}
+
+.background-decor span:nth-child(6) {
+    bottom: 25%;
+    right: 15%;
+}
+
+.background-decor span:nth-child(7) {
+    top: 80%;
+    left: 30%;
+}
+
+.background-decor span:nth-child(8) {
+    bottom: 12%;
+    left: 12%;
+}
+
+.background-decor span:nth-child(9) {
+    top: 55%;
+    right: 25%;
+}
+
+.background-decor span:nth-child(10) {
+    top: 10%;
+    left: 45%;
+}
+
+/* MAIN CALCULATOR */
+
+.cal-box {
+    width: 390px;
+    max-width: 100%;
+    padding: 25px;
+
+    border-radius: 38px;
+    position: relative;
+    z-index: 2;
+    isolation: isolate;
+
+    background: linear-gradient(
+        135deg,
+        rgba(225, 250, 255, 0.92),
+        rgba(164, 225, 238, 0.83),
+        rgba(221, 204, 244, 0.88)
+    );
+
+    border: 4px solid rgba(255,255,255,0.95);
+
+    box-shadow:
+        0 0 0 5px rgba(180, 235, 255, 0.35),
+        0 20px 55px rgba(0, 40, 80, 0.4),
+        0 0 35px rgba(220, 250, 255, 0.8),
+        inset 0 0 25px white;
+
+    animation: entrance 1s ease;
+}
+
+/* INNER BOX */
+
+.box {
+    width: 100%;
+    padding: 18px;
+
+    border-radius: 27px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.75),
+        rgba(177,232,243,0.65),
+        rgba(220,210,245,0.65)
+    );
+
+    border: 3px solid white;
+
+    box-shadow:
+        inset 0 0 25px white,
+        0 0 18px rgba(100,180,210,0.3);
+}
+
+/* TITLE */
+
+.calculator-title {
+    text-align: center;
+    color: #327c9b;
+
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: 3px;
+
+    text-shadow: 0 0 10px white;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #9476b5;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    margin-bottom: 18px;
+}
+
+/* DISPLAY */
+
+.inputValue {
+    width: 100%;
+    height: 100px;
+
+    padding: 15px;
+    margin-bottom: 20px;
+
+    border: 4px solid white;
+    border-radius: 23px;
+    outline: none;
+
+    background: linear-gradient(
+        135deg,
+        #effeff,
+        #b9e9f4,
+        #e5f9ff,
+        #eee4fa
+    );
+
+    color: #287d91;
+
+    font-size: 34px;
+    font-weight: 800;
+    text-align: right;
+
+    box-shadow:
+        inset 0 0 20px rgba(70,154,177,0.2),
+        0 0 15px white,
+        0 5px 15px rgba(76,153,175,0.2);
+}
+
+.inputValue::placeholder {
+    color: #83b9c6;
+}
+
+/* BUTTON GRID */
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(5, 62px);
+
+    gap: 7px;
+    width: 100%;
+}
+
+/* ALL BUTTONS */
+
+.container button {
+    width: 100%;
+    height: 62px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 17px;
+    border: 3px solid white;
+
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        #bcebf3 45%,
+        #e5faff
+    );
+
+    color: #45899b;
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+
+    box-shadow:
+        0 5px 10px rgba(67,142,165,0.22),
+        inset 0 4px 8px white,
+        inset 0 -5px 8px rgba(100,190,208,0.2);
+
+    transition: all 0.25s ease;
+}
+
+/* BUTTON SHINE */
+
+.container button::before {
+    content: "";
+    position: absolute;
+
+    top: 5px;
+    left: 12%;
+
+    width: 75%;
+    height: 30%;
+
+    border-radius: 50%;
+    background: rgba(255,255,255,0.55);
+
+    filter: blur(5px);
+    pointer-events: none;
+}
+
+.container button:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 8px 18px rgba(72,151,180,0.35),
+        0 0 18px white;
+}
+
+.container button:active {
+    transform: scale(0.94);
+}
+
+/* BUTTON POSITIONS */
+
+.container button:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.container button:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.container button:nth-child(3) {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.container button:nth-child(4) {
+    grid-column: 4;
+    grid-row: 1;
+}
+
+.container button:nth-child(5) {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.container button:nth-child(6) {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.container button:nth-child(7) {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.container button:nth-child(8) {
+    grid-column: 4;
+    grid-row: 2;
+}
+
+.container button:nth-child(9) {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.container button:nth-child(10) {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.container button:nth-child(11) {
+    grid-column: 3;
+    grid-row: 3;
+}
+
+.container button:nth-child(12) {
+    grid-column: 4;
+    grid-row: 3;
+}
+
+.container button:nth-child(13) {
+    grid-column: 1;
+    grid-row: 4;
+}
+
+.container button:nth-child(14) {
+    grid-column: 2;
+    grid-row: 4;
+}
+
+.container button:nth-child(15) {
+    grid-column: 3;
+    grid-row: 4;
+}
+
+.container button:nth-child(16) {
+    grid-column: 4;
+    grid-row: 4;
+}
+
+/* ZERO */
+
+.container button.btnzero {
+    grid-column: 1 / span 2;
+    grid-row: 5;
+}
+
+/* DECIMAL */
+
+.container button:nth-child(18) {
+    grid-column: 3;
+    grid-row: 5;
+}
+
+/* EQUAL */
+
+.container button.btnequal {
+    grid-column: 4;
+    grid-row: 5;
+
+    background: linear-gradient(
+        145deg,
+        #e8d9ff,
+        #b49cde,
+        #e6d9ff
+    );
+
+    color: white;
+    font-size: 28px;
+
+    box-shadow:
+        0 6px 15px rgba(130,105,180,0.3),
+        inset 0 4px 10px white;
+}
+
+.container button.btnequal:hover {
+    box-shadow:
+        0 0 20px #e1caff,
+        0 8px 15px rgba(130,105,180,0.3);
+}
+
+/* CLEAR BUTTON */
+
+.container button:nth-child(1),
+.container button:nth-child(2) {
+    background: linear-gradient(
+        145deg,
+        #fff5fb,
+        #f2c5e5,
+        #ffe6f3
+    );
+
+    color: #ae6596;
+}
+
+/* OPERATORS */
+
+.container button:nth-child(4),
+.container button:nth-child(8),
+.container button:nth-child(12),
+.container button:nth-child(16),
+.container button:nth-child(3) {
+    background: linear-gradient(
+        145deg,
+        #f1ffff,
+        #a6dce9,
+        #e4fbff
+    );
+
+    color: #39879c;
+}
+
+/* FOOTER */
+
+.footer-text {
+    text-align: center;
+
+    color: #659eae;
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+
+    margin-top: 18px;
+}
+
+/* OCEAN STICKERS */
+
+.ocean-stickers {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+    z-index: 5;
+}
+
+.sticker {
+    position: absolute;
+    display: block;
+
+    user-select: none;
+
+    filter: drop-shadow(
+        0 4px 6px rgba(30,100,140,0.35)
+    );
+
+    animation: stickerFloat 4s ease-in-out infinite;
+}
+
+/* LEFT SIDE */
+
+.left-one {
+    left: -57px;
+    top: 15%;
+    font-size: 42px;
+}
+
+.left-two {
+    left: -45px;
+    top: 36%;
+    font-size: 32px;
+    animation-delay: 1s;
+}
+
+.left-three {
+    left: -52px;
+    top: 57%;
+    font-size: 38px;
+    animation-delay: 2s;
+}
+
+.left-four {
+    left: -48px;
+    bottom: 12%;
+    font-size: 42px;
+    animation-delay: 1.5s;
+}
+
+/* RIGHT SIDE */
+
+.right-one {
+    right: -57px;
+    top: 15%;
+    font-size: 42px;
+}
+
+.right-two {
+    right: -48px;
+    top: 36%;
+    font-size: 40px;
+    animation-delay: 2s;
+}
+
+.right-three {
+    right: -45px;
+    top: 57%;
+    font-size: 34px;
+    animation-delay: 0.5s;
+}
+
+.right-four {
+    right: -52px;
+    bottom: 12%;
+    font-size: 38px;
+    animation-delay: 1.5s;
+}
+
+/* TOP DECORATIONS */
+
+.top-left {
+    left: 8px;
+    top: -48px;
+    font-size: 38px;
+}
+
+.top-right {
+    right: 8px;
+    top: -48px;
+    font-size: 35px;
+}
+
+/* BOTTOM DECORATIONS */
+
+.bottom-left {
+    left: 10px;
+    bottom: -48px;
+    font-size: 38px;
+}
+
+.bottom-right {
+    right: 10px;
+    bottom: -48px;
+    font-size: 35px;
+}
+
+/* ANIMATIONS */
+
+@keyframes stickerFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes floatBackground {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-25px) rotate(12deg);
+    }
+}
+
+@keyframes entrance {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 75px 20px;
+    }
+
+    .cal-box {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .box {
+        padding: 12px;
+    }
+
+    .container {
+        grid-template-rows: repeat(5, 55px);
+        gap: 5px;
+    }
+
+    .container button {
+        height: 55px;
+        font-size: 19px;
+    }
+
+    .container button.btnequal {
+        height: 55px;
+        font-size: 25px;
+    }
+
+    .inputValue {
+        height: 85px;
+        font-size: 28px;
+    }
+
+    .calculator-title {
+        font-size: 16px;
+    }
+
+    .left-one,
+    .left-four,
+    .right-one,
+    .right-four {
+        font-size: 29px;
+    }
+
+    .left-two,
+    .right-three {
+        font-size: 24px;
+    }
+
+    .left-three,
+    .right-two {
+        font-size: 27px;
+    }
+}

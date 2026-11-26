@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mermaid Crystal Calculator</title>
+
+    <link rel="stylesheet" href="css/calcu.css">
+
+</head>
+
+<body>
+
+    <!-- Floating Background Decorations -->
+
+    <div class="background-decor">
+
+        <span>🫧</span>
+        <span>✨</span>
+        <span>🐚</span>
+        <span>🪼</span>
+        <span>💎</span>
+        <span>🫧</span>
+        <span>⭐</span>
+        <span>🪸</span>
+        <span>✨</span>
+        <span>🐚</span>
+
+    </div>
+
+
+    <!-- MAIN CALCULATOR -->
+
+    <div class="cal-box">
+
+        <!-- Ocean Stickers -->
+
+        <div class="ocean-stickers">
+
+            <span class="sticker shell left-one">🐚</span>
+            <span class="sticker star left-two">⭐</span>
+            <span class="sticker bubble left-three">🫧</span>
+            <span class="sticker coral left-four">🪸</span>
+
+            <span class="sticker shell right-one">🐚</span>
+            <span class="sticker jelly right-two">🪼</span>
+            <span class="sticker star right-three">🌟</span>
+            <span class="sticker bubble right-four">🫧</span>
+
+            <span class="sticker mermaid top-left">🧜‍♀️</span>
+            <span class="sticker crystal top-right">💎</span>
+
+            <span class="sticker pearl bottom-left">🦪</span>
+            <span class="sticker star bottom-right">⭐</span>
+
+        </div>
+
+
+        <!-- Calculator Inner Box -->
+
+        <div class="box">
+
+            <h2 class="calculator-title">
+                ✧ OCEAN PEARL ✧
+            </h2>
+
+            <p class="subtitle">~ magical crystal calculator ~</p>
+
+
+            <!-- Calculator Display -->
+
+            <form name="form1" action="">
+
+                <input
+                    class="inputValue"
+                    type="text"
+                    name="textview"
+                    readonly
+                    placeholder="0"
+                >
+
+            </form>
+
+
+            <!-- Calculator Buttons -->
+
+            <section>
+
+                <div class="container">
+
+                    <button type="button" value="C"
+                        onclick="clearDisplay()">AC</button>
+
+                    <button type="button" value="B"
+                        onclick="backspace()">⌫</button>
+
+                    <button type="button" value="%"
+                        onclick="insert('%')">%</button>
+
+                    <button type="button" value="/"
+                        onclick="insert('/')">÷</button>
+
+
+                    <button type="button" value="7"
+                        onclick="insert(7)">7</button>
+
+                    <button type="button" value="8"
+                        onclick="insert(8)">8</button>
+
+                    <button type="button" value="9"
+                        onclick="insert(9)">9</button>
+
+                    <button type="button" value="*"
+                        onclick="insert('*')">×</button>
+
+
+                    <button type="button" value="4"
+                        onclick="insert(4)">4</button>
+
+                    <button type="button" value="5"
+                        onclick="insert(5)">5</button>
+
+                    <button type="button" value="6"
+                        onclick="insert(6)">6</button>
+
+                    <button type="button" value="-"
+                        onclick="insert('-')">−</button>
+
+
+                    <button type="button" value="1"
+                        onclick="insert(1)">1</button>
+
+                    <button type="button" value="2"
+                        onclick="insert(2)">2</button>
+
+                    <button type="button" value="3"
+                        onclick="insert(3)">3</button>
+
+                    <button type="button" value="+"
+                        onclick="insert('+')">+</button>
+
+
+                    <button type="button" value="0"
+                        class="btnzero"
+                        onclick="insert(0)">0</button>
+
+                    <button type="button" value="."
+                        onclick="insert('.')">.</button>
+
+                    <button type="button" value="="
+                        class="btnequal"
+                        onclick="equal()">=</button>
+
+                </div>
+
+            </section>
+
+
+            <!-- Bottom Text -->
+
+            <p class="footer-text">
+                ♡ MADE WITH MAGIC & PEARLS ♡
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="calcu.js"></script>
+
+</body>
+
+</html>
